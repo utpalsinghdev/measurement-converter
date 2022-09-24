@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Length converter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="inputArea">
+        <input type="number" id="inputData" placeholder="Enter your data" />
+        <select name="" id="inputType">
+          <option value="" selected disabled hidden>choose format</option>
+          <option value="meter">meter</option>
+          <option value="centimeter">centimeter</option>
+          <option value="kiloMeter">kiloMeter</option>
+        </select>
+      </div>
+
+      <div class="outputArea">
+        <input
+          type="number"
+          id="oututData"
+          placeholder="Your result"
+          disabled
+        />
+        <select name="" id="outputType">
+          <option value="" selected disabled hidden>choose format</option>
+          <option value="meter">meter</option>
+          <option value="centimeter">centimeter</option>
+          <option value="kiloMeter">kiloMeter</option>
+        </select>
+      </div>
+
+      <button id="btn">get result</button>
+    </div>
+  </body>
+  <script>
+    var inlet = document.querySelector("#inputType"); //for taking the input format
+    var outlet = document.querySelector("#outputType"); //for taking output format
+    var input = document.getElementById("inputData"); //for taking input data
+    var outputScreen = document.getElementById("oututData"); //for showing result
+    
+    document.getElementById("btn").addEventListener(
+      "click",
+      (result = () => {
+        if (inlet.value == "meter") {
+          if (outlet.value == "meter") {
+            outputScreen.value = input.value * 1;
+          } else if (outlet.value == "centimeter") {
+            outputScreen.value = input.value * 100;
+          } else if (outlet.value == "kiloMeter") {
+            outputScreen.value = input.value / 1000;
+          }
+        } else if (inlet.value == "centimeter") {
+          if (outlet.value == "meter") {
+            outputScreen.value = input.value / 100;
+          } else if (outlet.value == "centimeter") {
+            outputScreen.value = input.value * 1;
+          } else if (outlet.value == "kiloMeter") {
+            outputScreen.value = input.value / 100000;
+          }
+        } else if (inlet.value == "kiloMeter") {
+          if (outlet.value == "meter") {
+            outputScreen.value = input.value * 1000;
+          } else if (outlet.value == "centimeter") {
+            outputScreen.value = input.value * 100000;
+          } else if (outlet.value == "kiloMeter") {
+            outputScreen.value = input.value * 1;
+          }
+        }
+      })
+    );
+  </script>
+</html>
